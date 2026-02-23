@@ -516,7 +516,7 @@ const Experience = () => {
         <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           <motion.div style={{ scale, rotate }} className="relative aspect-square rounded-3xl overflow-hidden border border-durian-gold/20">
             <img 
-              src="durian.png?auto=format&fit=crop&q=80&w=1000" 
+              src="/durian.png?auto=format&fit=crop&q=80&w=1000" 
               alt="Durian Detail" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
