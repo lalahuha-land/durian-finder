@@ -74,7 +74,7 @@ const InteractiveMap = ({ activeStallId, onStallSelect }: { activeStallId: numbe
       el.className = 'durian-marker-icon';
       el.style.width = '40px';
       el.style.height = '40px';
-      el.style.backgroundImage = 'url(https://cdn-icons-png.flaticon.com/512/1047/1047503.png)';
+      el.style.backgroundImage = 'url(https://img.icons8.com/?size=100&id=32274&format=png&color=000000)';
       el.style.backgroundSize = 'cover';
       el.style.cursor = 'pointer';
 
@@ -244,7 +244,7 @@ const Hero = () => {
         className="absolute inset-0 z-0"
       >
         <img 
-          src="https://images.unsplash.com/photo-1595475207225-428b62bda831?auto=format&fit=crop&q=80&w=2000" 
+          src="../assets/durian2.png?auto=format&fit=crop&q=80&w=2000" 
           alt="Durian Background" 
           className="w-full h-full object-cover opacity-30 grayscale hover:grayscale-0 transition-all duration-1000"
           referrerPolicy="no-referrer"
@@ -275,7 +275,7 @@ const Hero = () => {
         >
           <div className="relative w-32 h-32 md:w-48 md:h-48">
             <motion.img 
-              src="https://cdn-icons-png.flaticon.com/512/1047/1047503.png" 
+              src="https://img.icons8.com/?size=100&id=YoLrMrlkxOz8&format=png&color=000000" 
               alt="Floating Durian"
               className="w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(234,179,8,0.5)] group-hover:drop-shadow-[0_20px_50px_rgba(234,179,8,0.8)] transition-all"
               animate={{
@@ -339,40 +339,61 @@ const SectionHeading = ({ title, subtitle, number }: { title: string, subtitle: 
 
 const Varieties = () => {
   const varieties = [
-    { name: "Musang King", origin: "Pahang", profile: "Creamy, Bitter-Sweet", img: "https://images.unsplash.com/photo-1595475207225-428b62bda831?w=800" },
-    { name: "Black Thorn", origin: "Penang", profile: "Intense, Wine-like", img: "https://images.unsplash.com/photo-1621973419519-58336585979c?w=800" },
-    { name: "D24 Sultan", origin: "Johor", profile: "Classic, Milky", img: "https://images.unsplash.com/photo-1595475207225-428b62bda831?w=800&q=2" },
-    { name: "Red Prawn", origin: "Penang", profile: "Sweet, Fibrous", img: "https://images.unsplash.com/photo-1621973419519-58336585979c?w=800&q=3" },
+    { name: "Musang King", origin: "Pahang", profile: "Creamy, Bitter-Sweet", img: "../assets/durian2.png" },
+    { name: "Black Thorn", origin: "Penang", profile: "Intense, Wine-like", img: "../assets/durian2.png" },
+    { name: "D24 Sultan", origin: "Johor", profile: "Classic, Milky", img: "../assets/durian2.png" },
+    { name: "Red Prawn", origin: "Penang", profile: "Sweet, Fibrous", img: "../assets/durian2.png" },
+    { name: "XO Durian", origin: "Pahang", profile: "Alcoholic, Bitter", img: "../assets/durian2.png" },
   ];
 
   return (
-    <section id="varieties" className="py-20 md:py-24 px-4 md:px-6 max-w-7xl mx-auto">
+    <section id="varieties" className="py-24 md:py-32 px-4 md:px-6 max-w-7xl mx-auto overflow-hidden">
       <SectionHeading title="The Selection" subtitle="Curated Varieties" number="01" />
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-        {varieties.map((v, i) => (
-          <motion.div
-            key={v.name}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="group relative aspect-[4/5] md:aspect-[3/4] overflow-hidden rounded-2xl md:rounded-3xl bg-durian-green/20 border border-durian-gold/10"
-          >
-            <img 
-              src={v.img} 
-              alt={v.name} 
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-durian-dark via-durian-dark/40 to-transparent opacity-90" />
-            <div className="absolute bottom-0 left-0 p-5 md:p-6 w-full">
-              <span className="font-mono text-[9px] text-durian-gold uppercase tracking-widest">{v.origin}</span>
-              <h3 className="text-xl md:text-2xl font-display font-bold mb-1 text-durian-cream">{v.name}</h3>
-              <p className="text-xs md:text-sm text-durian-cream/60">{v.profile}</p>
-            </div>
-          </motion.div>
-        ))}
+      {/* Container for the fan effect */}
+      <div className="relative flex justify-center items-center min-h-[500px] mt-12">
+        {varieties.map((v, i) => {
+          // Calculate the distance from the center card
+          const centerIndex = (varieties.length - 1) / 2;
+          const distanceFromCenter = i - centerIndex;
+          
+          return (
+            <motion.div
+              key={v.name}
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ 
+                opacity: 1, 
+                y: Math.abs(distanceFromCenter) * 30, // Creates the arc/curved bottom
+                x: distanceFromCenter * 150, // Spacing between cards
+                rotate: distanceFromCenter * 10, // The "Fan" rotation
+              }}
+              viewport={{ once: true }}
+              whileHover={{ 
+                y: Math.abs(distanceFromCenter) * 20 - 50, // Lift up on hover
+                scale: 1.05,
+                zIndex: 50,
+                transition: { duration: 0.3 }
+              }}
+              style={{ 
+                zIndex: i,
+                position: i === Math.floor(centerIndex) ? 'relative' : 'absolute' 
+              }}
+              className="group w-[280px] aspect-[3/4] overflow-hidden rounded-3xl bg-durian-dark border border-white/10 shadow-2xl cursor-pointer"
+            >
+              <img 
+                src={v.img} 
+                alt={v.name} 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 p-6 w-full">
+                <span className="font-mono text-[10px] text-durian-gold uppercase tracking-widest">{v.origin}</span>
+                <h3 className="text-2xl font-display font-bold mb-1 text-durian-cream">{v.name}</h3>
+                <p className="text-sm text-durian-cream/60">{v.profile}</p>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );
@@ -495,7 +516,7 @@ const Experience = () => {
         <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           <motion.div style={{ scale, rotate }} className="relative aspect-square rounded-3xl overflow-hidden border border-durian-gold/20">
             <img 
-              src="https://images.unsplash.com/photo-1621973419519-58336585979c?auto=format&fit=crop&q=80&w=1000" 
+              src="../assets/durian.png?auto=format&fit=crop&q=80&w=1000" 
               alt="Durian Detail" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
@@ -540,7 +561,7 @@ const Footer = () => {
           <a href="#" className="hover:text-durian-gold transition-colors">Twitter</a>
         </div>
         <p className="text-[9px] md:text-[10px] font-mono uppercase tracking-widest opacity-40 text-center text-durian-cream">
-          © 2024 DurianRuntuh. All rights reserved.
+          © 2025 DurianRuntuh. All rights reserved.
         </p>
       </div>
     </footer>
@@ -585,7 +606,7 @@ export default function App() {
       <Footer />
       
       {/* Global Background Noise/Texture */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-[100] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-[100] bg-[url('../assets/durian.png')]" />
     </div>
   );
 }
