@@ -1,0 +1,5 @@
+{
+  "name": "DurianRuntuh - The King's Selection",
+  "description": "A premium durian discovery experience with cinematic scrolling and smooth animations.",
+  "requestFramePermissions": ["geolocation"]
+}
