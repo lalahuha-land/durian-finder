@@ -244,7 +244,7 @@ const Hero = () => {
         className="absolute inset-0 z-0"
       >
         <img 
-          src="../assets/durian2.png?auto=format&fit=crop&q=80&w=2000" 
+          src="/durian2.png?auto=format&fit=crop&q=80&w=2000" 
           alt="Durian Background" 
           className="w-full h-full object-cover opacity-30 grayscale hover:grayscale-0 transition-all duration-1000"
           referrerPolicy="no-referrer"
@@ -339,11 +339,11 @@ const SectionHeading = ({ title, subtitle, number }: { title: string, subtitle: 
 
 const Varieties = () => {
   const varieties = [
-    { name: "Musang King", origin: "Pahang", profile: "Creamy, Bitter-Sweet", img: "../assets/durian2.png" },
-    { name: "Black Thorn", origin: "Penang", profile: "Intense, Wine-like", img: "../assets/durian2.png" },
-    { name: "D24 Sultan", origin: "Johor", profile: "Classic, Milky", img: "../assets/durian2.png" },
-    { name: "Red Prawn", origin: "Penang", profile: "Sweet, Fibrous", img: "../assets/durian2.png" },
-    { name: "XO Durian", origin: "Pahang", profile: "Alcoholic, Bitter", img: "../assets/durian2.png" },
+    { name: "Musang King", origin: "Pahang", profile: "Creamy, Bitter-Sweet", img: "/durian2.png" },
+    { name: "Black Thorn", origin: "Penang", profile: "Intense, Wine-like", img: "/durian2.png" },
+    { name: "D24 Sultan", origin: "Johor", profile: "Classic, Milky", img: "/durian2.png" },
+    { name: "Red Prawn", origin: "Penang", profile: "Sweet, Fibrous", img: "/durian2.png" },
+    { name: "XO Durian", origin: "Pahang", profile: "Alcoholic, Bitter", img: "/durian2.png" },
   ];
 
   return (
@@ -516,7 +516,7 @@ const Experience = () => {
         <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           <motion.div style={{ scale, rotate }} className="relative aspect-square rounded-3xl overflow-hidden border border-durian-gold/20">
             <img 
-              src="../assets/durian.png?auto=format&fit=crop&q=80&w=1000" 
+              src="durian.png?auto=format&fit=crop&q=80&w=1000" 
               alt="Durian Detail" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
@@ -606,7 +606,7 @@ export default function App() {
       <Footer />
       
       {/* Global Background Noise/Texture */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-[100] bg-[url('../assets/durian.png')]" />
+      <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-[100] bg-[url('durian.png')]" />
     </div>
   );
 }
